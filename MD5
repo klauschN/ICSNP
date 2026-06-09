@@ -1,4 +1,4 @@
-a4b11b5d2260e089b6c87d8718bd2561 *DESCRIPTION
+40cfe91395bf2f67c184940a1d953610 *DESCRIPTION
 a9c4a61f38d0b43477e20045e814670a *NAMESPACE
 b2cd36c0b67d170358c868055af46c97 *R/HP.loc.test.R
 331b893a79daa65ce6c85214c64a4ea8 *R/HP1.shape.R
@@ -30,16 +30,14 @@ f97e8f873aedb712d874f4331ab2928c *R/symm.huber.wt.R
 fcbc88ac56bed808f2f30e1bc45c70c1 *R/tyler.shape.R
 7319689ba05b41a554e4dab085bd979f *R/tyler.shape.internal.R
 46421ef079db9135ac5257649cce5a3d *R/vdw.loc.R
-8a59b32281ff2e6649ffabcdda913fc9 *build/partial.rdb
-140fab514e356470e3a4b6467aba9759 *data/LASERI.txt.gz
-6c65c7072b4b2607d186e1a86726ccdf *data/pulmonary.rda
-c0d69e0648404cacc7334e5ec3a22544 *inst/ChangeLog
+10b4df2aeeaac58dcad35521d0fc9176 *build/partial.rdb
+697cc07bed1bed85d60ae15a2fd515ce *data/pulmonary.rda
+8bd1171a7630380d1ead3d8b7ee07bd8 *inst/ChangeLog
 37d8612efaee8fc1a02989be4cd9998d *man/HP.loc.test.Rd
 a074481750158284aad0a17564177050 *man/HP1.shape.Rd
 61a064c32b1074402a257f57fc33f11c *man/HR.Mest.Rd
 4b4b2f8cda3a5a336cffebbf82fc6dca *man/HotellingsT.Rd
 6d1cb5528d5af8f0dc721693a12ee8d6 *man/ICSNP-package.Rd
-099fac9620ec4aa3aff8055819338571 *man/LASERI.Rd
 0dc8a9a45ee654a8154629f11f09465d *man/duembgen.shape.Rd
 48a7a22ba5ed385d6fe3484471181ec7 *man/duembgen.shape.wt.Rd
 eb9052e80c4e5468243e18be955f438b *man/hl.loc.Rd
