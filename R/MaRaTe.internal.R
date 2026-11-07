@@ -10,7 +10,7 @@
   A<-t(scores)%*%scores/switch(test,"rank"=(n+1)^2,1)
   S<-colSums(scores)/switch(test,"rank"=(n+1),1)
   test.statistic<-as.numeric(t(S)%*%solve(A)%*%S)
-  p.value<-1-pchisq(test.statistic,p)
+  p.value<-pchisq(test.statistic,p, lower.tail = FALSE)
   return(list(test.statistic=test.statistic,p.value=p.value))
  }
  # else two samples
@@ -33,7 +33,7 @@
  W.inv<-solve(W)
  L<-as.numeric(n*t(T.X-E.bar)%*%W.inv%*%(T.X-E.bar)+m*t(T.Y-E.bar)%*%W.inv%*%(T.Y-E.bar))
                         
- p.value<-1-pchisq(L,p)
+ p.value<-pchisq(L,p, lower.tail = FALSE)
 
  list(test.statistic=L,p.value=p.value,Cov=W,df=p)
 }
@@ -88,7 +88,7 @@ MaRaTe.internal.csample<-function(X,g,scores="rank",...)
  
  L<-as.numeric(L)
  dfs<-p*(length(g.levels)-1)                       
- p.value<-1-pchisq(L,dfs)
+ p.value<-pchisq(L,dfs, lower.tail = FALSE)
 
  list(test.statistic=L,p.value=p.value,Cov=W,df=dfs)
  }

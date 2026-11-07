@@ -14,7 +14,7 @@
 \method{rank.ctest}{default}(X, Y = NULL, mu = NULL, scores = "rank", 
            na.action = na.fail, \dots)
 
-\method{rank.ctest}{formula}(formula, na.action = na.fail, \dots)
+\method{rank.ctest}{formula}(formula, data, subset, na.action = na.fail, \dots)
 
 \method{rank.ctest}{ics}(X, g = NULL, index = NULL, na.action = na.fail, \dots)
 }
@@ -29,7 +29,11 @@
         a normal score test is performed. }
   \item{formula}{a formula of the form \code{X ~ g} where \code{X}
     is a numeric matrix giving the data values and \code{g} a factor
-    with at least two levels giving the corresponding groups.}
+    with at least two levels giving the corresponding groups. \code{X} can also be given
+    as \code{cbind(x1, x2, ...)} with variables from \code{data}.}
+  \item{data}{an optional data frame (or matrix) containing the variables in \code{formula}.
+    By default the variables are taken from the environment of \code{formula}.}
+  \item{subset}{an optional vector specifying a subset of observations to be used.}
   \item{g}{a grouping factor with at least two levels.}
   \item{index}{an integer vector that gives the columns to choose the invariant coordinates form the 'ics' object. The default uses all columns.}
   \item{na.action}{  a function which indicates what should happen when the data
@@ -87,6 +91,9 @@ Z2 <- rbind(X,Y,W)
 g2 <- factor(rep(1:3, c(20,30,30)))
 
 rank.ctest(Z2~g2, scores = "normal")
+
+# variables taken from a data frame
+rank.ctest(cbind(Sepal.Length, Sepal.Width) ~ Species, data = iris)
 
 # in an invariant coordinate system
 

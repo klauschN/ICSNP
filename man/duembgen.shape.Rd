@@ -26,7 +26,7 @@ Therefore this shape matrix needs no location parameter.
 
 The function is, however, slow if the dataset is large.
 
-The algorithm also allows for a k-step version where the iteration is run for a fixed number of steps instead of until convergence. If \code{steps} is finite that number of steps is taken and \code{maxiter} is ignored.
+The algorithm also allows for a k-step version where the iteration is run for a fixed number of steps instead of until convergence. If \code{steps} is finite that number of steps is taken and \code{maxiter} is ignored. With \code{steps = 0} the initial value, standardized to have determinant one, is returned.
 
 A better implementation is available in the package fastM as the function \code{DUEMBGENshape}.
 }

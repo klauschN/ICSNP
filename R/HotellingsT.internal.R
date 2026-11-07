@@ -8,7 +8,7 @@
   test.statistic<-n*as.numeric(t(colMeans(X)-mu)%*%solve(cov(X))%*%(colMeans(X)-mu))*switch(test,f=(n-p)/(p*(n-1)),chi=1)
   df.1<-p
   df.2<-switch(test,f=n-p,chi=NA) 
-  p.value<-1-switch(test,f=pf(test.statistic,df.1,df.2),chi=pchisq(test.statistic,df.1))
+  p.value<-switch(test,f=pf(test.statistic,df.1,df.2,lower.tail=FALSE),chi=pchisq(test.statistic,df.1,lower.tail=FALSE))
   return(list(test.statistic=test.statistic,p.value=p.value,df.1=df.1,df.2=df.2))
  }
  
@@ -20,9 +20,9 @@
  X.diff<-sweep(X,2,Xmeans)
  Y.diff<-sweep(Y,2,Ymeans)
  S.pooled<-1/(n1+n2-2)*(t(X.diff)%*%X.diff+t(Y.diff)%*%Y.diff)
- test.statistic<-n1*n2/(n1+n2)*t(Xmeans-Ymeans-mu)%*%solve(S.pooled)%*%(Xmeans-Ymeans-mu)*switch(test,f=(n1+n2-p-1)/(p*(n1+n2-2)),chi=1)
+ test.statistic<-n1*n2/(n1+n2)*as.numeric(t(Xmeans-Ymeans-mu)%*%solve(S.pooled)%*%(Xmeans-Ymeans-mu))*switch(test,f=(n1+n2-p-1)/(p*(n1+n2-2)),chi=1)
  df.1<-p
  df.2<-switch(test,f=n1+n2-p-1,chi=NA)
- p.value<-1-switch(test,f=pf(test.statistic,df.1,df.2),chi=pchisq(test.statistic,df.1))
+ p.value<-switch(test,f=pf(test.statistic,df.1,df.2,lower.tail=FALSE),chi=pchisq(test.statistic,df.1,lower.tail=FALSE))
  list(test.statistic=test.statistic,p.value=p.value,df.1=df.1,df.2=df.2)
 }

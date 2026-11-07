@@ -13,7 +13,7 @@
 \method{HotellingsT2}{default}(X, Y = NULL, mu = NULL, test = "f",
              na.action = na.fail, \dots)
 
-\method{HotellingsT2}{formula}(formula, na.action = na.fail, \dots) }
+\method{HotellingsT2}{formula}(formula, data, subset, na.action = na.fail, \dots) }
 
 \arguments{
   \item{X}{a numeric data frame or matrix. }
@@ -23,7 +23,11 @@
   \item{test}{if 'f', the decision is based on the F-distribution, if 'chi' a chi-squared approximation is used. }
   \item{formula}{a formula of the form \code{X ~ g} where \code{X}
     is a numeric matrix giving the data values and \code{g} a factor
-    with two levels giving the corresponding groups.}
+    with two levels giving the corresponding groups. \code{X} can also be given
+    as \code{cbind(x1, x2, ...)} with variables from \code{data}.}
+  \item{data}{an optional data frame (or matrix) containing the variables in \code{formula}.
+    By default the variables are taken from the environment of \code{formula}.}
+  \item{subset}{an optional vector specifying a subset of observations to be used.}
   \item{na.action}{a function which indicates what should happen when the data
           contain 'NA's. Default is to fail. }
   \item{\dots}{further arguments to be passed to or from methods.}
@@ -79,6 +83,10 @@ g <- factor(rep(c(1,2),c(20,30)))
 
 HotellingsT2(X, Y)
 HotellingsT2(Z ~ g, mu = rep(-0.5,4))
+
+# variables taken from a data frame
+HotellingsT2(cbind(Sepal.Length, Sepal.Width) ~ Species, data = iris,
+             subset = Species != "virginica")
 
 rm(.Random.seed) }
 

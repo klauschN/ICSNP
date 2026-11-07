@@ -1,7 +1,7 @@
 \name{ind.ctest}
 \alias{ind.ctest}
 
-\title{Test of Independece based on Marginal Ranks}
+\title{Test of Independence based on Marginal Ranks}
 \description{
   Performs the test that a group of variables is independent of an other based on marginal ranks. Three different score functions are available.
 }

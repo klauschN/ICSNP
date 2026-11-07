@@ -37,12 +37,12 @@ ind.ictest<-function(X,index1,index2 = NULL,scores="rank",method = "approximatio
     
     
     if (p.ind1==1)
-    {ic.X1 <- X$X1}
+    {ic.X1 <- as.matrix(unclass(X$X1))}
     else
     {ic.X1 <- ics.components(ics(X$X1,...))}
     
     if (p.ind2==1)
-    {ic.X2 <- X$X2}
+    {ic.X2 <- as.matrix(unclass(X$X2))}
     else
     {ic.X2 <- ics.components(ics(X$X2,...))}
     
@@ -82,7 +82,7 @@ ind.ictest<-function(X,index1,index2 = NULL,scores="rank",method = "approximatio
     
     Q.stat<- n*frobenius.norm(as.matrix(C.stat))^2
     
-    if (method=="approximation") p.value <- 1-pchisq(Q.stat,p.ind1*p.ind2)
+    if (method=="approximation") p.value <- pchisq(Q.stat,p.ind1*p.ind2, lower.tail = FALSE)
     if (method=="simulation" & scores=="rank") {Qs <-replicate(n.simu,.Q.simu.rank(rmvnorm(n,rep(0,p.ind1+p.ind2)),p1=p.ind1,p2=p.ind2,n=n));
                   p.value <- mean(Qs>Q.stat)}
     if (method=="simulation" & scores=="sign") {Qs <-replicate(n.simu,.Q.simu.sign(rmvnorm(n,rep(0,p.ind1+p.ind2)),p1=p.ind1,p2=p.ind2,n=n));

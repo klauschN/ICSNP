@@ -8,7 +8,7 @@
               "normal"=qnorm(0.5+apply(abs(X),2,rank)/(2*(n+1)))
               ))
     Q<-sum(T^2)*switch(score,"rank"=3,1)
-    p.value<-1-pchisq(Q,p)
+    p.value<-pchisq(Q,p, lower.tail = FALSE)
 
     list(test.statistic=Q,p.value=p.value)
 }

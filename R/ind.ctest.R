@@ -49,7 +49,7 @@ ind.ctest<-function(X,index1,index2 = NULL,scores="rank",na.action=na.fail)
     W<-det(T)/(det(as.matrix(T[1:p.ind1,1:p.ind1]))*det(as.matrix(T[-(1:p.ind1),-(1:p.ind1)])))
     
     W.stat<- -n*log(W)
-    p.value<- 1-pchisq(W.stat,p.ind1*p.ind2)
+    p.value<- pchisq(W.stat,p.ind1*p.ind2, lower.tail = FALSE)
     
     STATISTIC<-W.stat
     names(STATISTIC)<-"W"

@@ -11,9 +11,7 @@
 \packageDescription{ICSNP}
 }
 \details{
-\packageDESCRIPTION{ICSNP}
-
-This package contains tools for nonparametric multivariate analysis, including the estimation of location and shape as well as some tests for location and independece.
+This package contains tools for nonparametric multivariate analysis, including the estimation of location and shape as well as some tests for location and independence.
 Shape matrices from this package can be used as one of the scatter matrices needed in the package \code{\link[ICS:ICS-package]{ICS}} whereas the tests of this package
 can be used for testing in the framework of invariant coordinates or independent components obtained from the package \code{\link[ICS:ICS-package]{ICS}}.
 The parametric Hotelling's T test serves as a reference for the nonparametric location tests.

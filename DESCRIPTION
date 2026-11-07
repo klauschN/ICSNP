@@ -1,8 +1,8 @@
 Package: ICSNP
 Type: Package
 Title: Tools for Multivariate Nonparametrics
-Version: 1.1-3
-Date: 2026-06-09
+Version: 1.2-0
+Date: 2026-11-07
 Authors@R: 
     c(person("Klaus", "Nordhausen", 
              email = "klausnordhausenR@gmail.com",
@@ -15,17 +15,28 @@ Authors@R:
              comment = c(ORCID = "0000-0002-4945-5976")),
       person("David E.", "Tyler", 
              role = c("aut")))
+Depends: mvtnorm, ICS
+Suggests: testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Description: Classical multivariate methods such as Hotelling's T-test are based on
+    the sample mean vector and the sample covariance matrix, which makes them
+    sensitive to outliers and heavy-tailed distributions. The package provides
+    nonparametric alternatives based on marginal ranks, spatial signs and
+    spatial ranks, as reviewed for example in Nordhausen and Oja (2018)
+    <doi:10.1146/annurev-statistics-031017-100247>. It contains tests for location and
+    independence, Hotelling's T-test as a parametric reference, the spatial
+    median and other location estimates, and several estimates of shape. The
+    tests can also be applied to invariant coordinates obtained with the
+    package 'ICS'.
+License: GPL (>= 2)
+Encoding: UTF-8
+NeedsCompilation: yes
+Packaged: 2026-11-07 20:09:12 UTC; klaus
 Author: Klaus Nordhausen [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-3758-8501>),
   Seija Sirkia [aut],
   Hannu Oja [aut] (ORCID: <https://orcid.org/0000-0002-4945-5976>),
   David E. Tyler [aut]
 Maintainer: Klaus Nordhausen <klausnordhausenR@gmail.com>
-Depends: mvtnorm, ICS
-Description: Tools for multivariate nonparametrics, as location tests based on marginal ranks, spatial median and spatial signs computation, Hotelling's T-test, estimates of shape are implemented.
-License: GPL (>= 2)
-Encoding: UTF-8
-NeedsCompilation: yes
-Packaged: 2026-06-09 06:12:39 UTC; nordklau
 Repository: CRAN
-Date/Publication: 2026-06-09 07:00:14 UTC
+Date/Publication: 2026-11-07 22:30:08 UTC

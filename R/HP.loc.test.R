@@ -58,7 +58,7 @@ function (X, mu = NULL, score = "rank", method = "approximation",
     Q1 <- sum(SUMS)
     STATISTIC <- DIV * Q1
     switch(method, approximation = {
-        PVAL <- 1 - pchisq(STATISTIC, k)
+        PVAL <- pchisq(STATISTIC, k, lower.tail = FALSE)
         PARAMETER <- k
         names(PARAMETER) <- "df"
     }, permutation = {

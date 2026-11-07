@@ -35,6 +35,8 @@ function(X,location=NULL,init=NULL,steps=Inf,eps=1e-6,maxiter=100,in.R=FALSE,pri
     if (is.numeric(init)) V.0<-solve(init)
     else V.0<-solve(t(data.centered)%*%data.centered)
     differ=Inf
+    # with steps = 0 the (standardized) initial value is returned
+    V.new<-V.0
     
     if (!in.R)
     {

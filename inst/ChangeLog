@@ -1,6 +1,25 @@
 LOG of the CHANGES in the package ICSNP
 
 
+Version 1.2.0
+
+* fixing a bug in ind.ictest: the simulation and permutation p-values for rank scores used a wrong scaling constant
+* fixing a bug in ind.ictest: rank and normal scores failed when one of the two blocks was univariate
+* fixing a bug in ind.ictest: permutation p-values for normal scores failed when the second block was univariate
+* fixing a bug in duembgen.shape: tied observations led to an error, zero pairwise differences are now removed with a warning
+* adding unit tests based on testthat
+* moving the compiled code from .C to .Call and from C++ to C: the data are no longer copied, the loops over all pairs can be interrupted, and the number of pairs is no longer limited by the integer range (pair.diff and related functions failed from about n = 29300 when p = 5)
+* the row norms and the sums of outer products of spatial signs used by spatial.sign, spatial.median and tyler.shape are now computed in R
+* removing unused C code
+* HotellingsT2: the two sample test statistic is now a number and not a 1 x 1 matrix, and the p-values are computed with lower.tail = FALSE so that very small p-values are no longer rounded to 0
+* the formula methods of HotellingsT2 and rank.ctest have new arguments data and subset (before, data was silently ignored), and na.action is now passed to model.frame so that the default na.fail is used as documented (before, missing values were silently removed)
+* vdw.loc now computes the Hodges-Lehmann estimate based on the van der Waerden signed-rank statistic exactly, by bisection over the Walsh averages. Before, a linear interpolation between two Walsh averages was used, which gave only an approximation, failed for n = 1 and returned -Inf or Inf for some samples. The arguments int.diff and maxiter are no longer used.
+* as a consequence, ind.ictest with scores = "normal" no longer gives wrong results when vdw.loc failed for one of the invariant coordinates
+* the chi-square p-values of rank.ctest, rank.ictest, HP.loc.test, ind.ctest and ind.ictest are computed with lower.tail = FALSE so that p-values below about 1e-16 are no longer rounded to 0
+* tyler.shape and duembgen.shape with steps = 0 failed, they now return the standardized initial value
+* the complete fixed-point iterations of duembgen.shape and symm.huber are now done in C, using Cholesky factors instead of symmetric square roots and inverses; the results are the same up to rounding errors, symm.huber is several times faster
+* rewriting the Description field of the DESCRIPTION file and adding a reference
+
 Version 1.1.3
 
 * Removing LASERI data

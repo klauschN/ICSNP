@@ -13,32 +13,20 @@ symm.huber <- function(X, qg=0.9, init=NULL, eps = 1e-06, maxiter = 100, na.acti
     n<-dim(X)[1]
 
     if (is.numeric(init)) V.0 <- init else V.0<- cov(X)
- 
-    iter<-0
-    differ<-Inf
-    
-    while(differ>eps)
-        {
-        if (iter==maxiter)
-            {
-             stop("maxiter reached without convergence")
-            }
-        iter<-iter+1
-        
-        V.new<- SSCov.hub(X,solve(V.0),c.square,sigma.square)
-        differ <- frobenius.norm(V.new-V.0)    
-        V.0<-V.new
-        }
+
+    # the fixed-point iteration is done in C (see src/icsnp.c)
+    V.new <- .Call(C_symm_huber, num.matrix(X), num.matrix(V.0), as.double(c.square),
+                   as.double(sigma.square), as.double(eps), as.double(maxiter))
+    attr(V.new, "iter") <- NULL
     colnames(V.new) <- CNAMES
     rownames(V.new) <- CNAMES
     V.new
     }
 
-# Internal function for symm.huber
-
+# Internal function (used in the tests): one step of the iteration, the
+# weighted average over all pairs of the outer products of the pairwise
+# differences, where V is the current scatter estimate
 SSCov.hub<-function(X,V,c.s,sig.s)
 {
-X<-as.matrix(X)
-d<-dim(X)
-matrix(.C("symm_huber", as.double(X), as.double(V), as.integer(d), as.double(c.s), as.double(sig.s),res=double(d[2]^2))$res, ncol=d[2],byrow=T)/(d[1]*(d[1]-1)/2)
+.Call(C_symm_huber_step, num.matrix(X), num.matrix(V), as.double(c.s), as.double(sig.s))
 }

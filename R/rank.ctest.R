@@ -134,7 +134,7 @@ function(X,Y=NULL,mu=NULL,scores="rank",na.action=na.fail,...)
     }
 
 `rank.ctest.formula` <-
-function(formula, na.action = na.fail,...)
+function(formula, data, subset, na.action = na.fail, ...)
    {
     if(missing(formula)
        || (length(formula) != 3)
@@ -143,7 +143,8 @@ function(formula, na.action = na.fail,...)
     m <- match.call(expand.dots = FALSE)
     if(is.matrix(eval(m$data, parent.frame())))
         m$data <- as.data.frame(data)
-    m[[1]] <- as.name("model.frame")
+    m[[1L]] <- quote(stats::model.frame)
+    m$na.action <- na.action
     m$... <- NULL
     mf <- eval(m, parent.frame())
     DNAME <- paste(names(mf), collapse = " by ")

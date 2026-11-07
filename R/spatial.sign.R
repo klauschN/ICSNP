@@ -64,7 +64,7 @@ function(X,center=TRUE,shape=TRUE,na.action=na.fail,...)
     }
 
     y<-sweep(X,2,center)%*%solve(mat.sqrt(shape))
-    y.norm <- norm(y) 
+    y.norm <- row.norms(y)
     spatial.signs<-sweep(y,1,y.norm,"/")
     spatial.signs[y.norm==0,] <- 0
     rownames(spatial.signs) <- rownames(X)
