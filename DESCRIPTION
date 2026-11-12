@@ -31,12 +31,3 @@ Description: Classical multivariate methods such as Hotelling's T-test are based
 License: GPL (>= 2)
 Encoding: UTF-8
 NeedsCompilation: yes
-Packaged: 2026-11-07 20:09:12 UTC; klaus
-Author: Klaus Nordhausen [aut, cre] (ORCID:
-    <https://orcid.org/0000-0002-3758-8501>),
-  Seija Sirkia [aut],
-  Hannu Oja [aut] (ORCID: <https://orcid.org/0000-0002-4945-5976>),
-  David E. Tyler [aut]
-Maintainer: Klaus Nordhausen <klausnordhausenR@gmail.com>
-Repository: CRAN
-Date/Publication: 2026-11-07 22:30:08 UTC
