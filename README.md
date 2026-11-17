@@ -58,7 +58,7 @@ HR.Mest(X)
 duembgen.shape(X)
 ```
 
-More examples are given in the help pages of the package and in the paper listed below.
+More examples are given in the help pages of the package and in the paper listed below. The R script [paper/ICSNP_paper_code.R](paper/ICSNP_paper_code.R) reproduces all examples of the paper, including its figure.
 
 ## Citation
 
